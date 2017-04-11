@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root name="R+Motion" version="2.0.0">
+  <DesignRoot name="Humanoid A-type" controller="CM-530">
+    <skeleton>
+      <joint motor="AX-12A" id="1" enable="True" id2="1" mirror="2" />
+      <joint motor="AX-12A" id="2" enable="True" id2="2" mirror="1" />
+      <joint motor="AX-12A" id="3" enable="True" id2="3" mirror="4" />
+      <joint motor="AX-12A" id="4" enable="True" id2="4" mirror="3" />
+      <joint motor="AX-12A" id="5" enable="True" id2="5" mirror="6" />
+      <joint motor="AX-12A" id="6" enable="True" id2="6" mirror="5" />
+      <joint motor="AX-12A" id="7" enable="True" id2="7" mirror="8" />
+      <joint motor="AX-12A" id="8" enable="True" id2="8" mirror="7" />
+      <joint motor="AX-12A" id="9" enable="True" id2="9" mirror="10" />
+      <joint motor="AX-12A" id="10" enable="True" id2="10" mirror="9" />
+      <joint motor="AX-12A" id="11" enable="True" id2="11" mirror="12" />
+      <joint motor="AX-12A" id="12" enable="True" id2="12" mirror="11" />
+      <joint motor="AX-12A" id="13" enable="True" id2="13" mirror="14" />
+      <joint motor="AX-12A" id="14" enable="True" id2="14" mirror="13" />
+      <joint motor="AX-12A" id="15" enable="True" id2="15" mirror="16" />
+      <joint motor="AX-12A" id="16" enable="True" id2="16" mirror="15" />
+      <joint motor="AX-12A" id="17" enable="True" id2="17" mirror="18" />
+      <joint motor="AX-12A" id="18" enable="True" id2="18" mirror="17" />
+    </skeleton>
+  </DesignRoot>
+  <FlowRoot>
+    <Flow name="1 Init" return="-1">
+      <units>
+        <unit main="1 Init" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="2 Balance" return="0">
+      <units>
+        <unit main="2 Balance" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="3 F_R_S" return="1">
+      <units>
+        <unit main="3 F_R_S" mainSpeed="2.1" loop="1" exit="7 F_R_E" exitSpeed="1.5" callSite="True" />
+        <unit main="5 ff_r_l" mainSpeed="2" loop="1" exit="8 F_L_E" exitSpeed="1.5" callSite="True" />
+        <unit main="6 ff_l_r" mainSpeed="2" loop="1" exit="7 F_R_E" exitSpeed="1.5" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="4 F_L_S" return="1">
+      <units>
+        <unit main="4 F_L_S" mainSpeed="2.1" loop="1" exit="8 F_L_E" exitSpeed="1.5" callSite="True" />
+        <unit main="6 ff_l_r" mainSpeed="2" loop="1" exit="7 F_R_E" exitSpeed="1.5" callSite="True" />
+        <unit main="5 ff_r_l" mainSpeed="2" loop="1" exit="8 F_L_E" exitSpeed="1.5" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="5 F_R_E" return="-1">
+      <units>
+        <unit main="7 F_R_E" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="6 F_L_E" return="-1">
+      <units>
+        <unit main="8 F_L_E" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="7 ff_r_l" return="0">
+      <units>
+        <unit main="9 ff_r_l" mainSpeed="2" loop="1" exit="8 F_L_E" exitSpeed="1.5" callSite="True" />
+        <unit main="10 ff_l_r" mainSpeed="2" loop="1" exit="7 F_R_E" exitSpeed="1.5" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="8 FRT_R_M" return="0">
+      <units>
+        <unit main="11 FRT_R_M" mainSpeed="2" loop="1" exit="6 ff_l_r" exitSpeed="2" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="9 FLT_L_M" return="0">
+      <units>
+        <unit main="12 FLT_L_M" mainSpeed="2" loop="1" exit="5 ff_r_l" exitSpeed="2" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="10 B_R_S" return="1">
+      <units>
+        <unit main="13 B_R_S" mainSpeed="2" loop="1" exit="17 B_R_E" exitSpeed="2" callSite="True" />
+        <unit main="15 B_R_M" mainSpeed="2.1" loop="1" exit="18 B_L_E" exitSpeed="2" callSite="True" />
+        <unit main="16 B_L_M" mainSpeed="2.1" loop="1" exit="17 B_R_E" exitSpeed="2" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="11 B_L_S" return="1">
+      <units>
+        <unit main="14 B_L_S" mainSpeed="2" loop="1" exit="18 B_L_E" exitSpeed="2" callSite="True" />
+        <unit main="16 B_L_M" mainSpeed="2.1" loop="1" exit="17 B_R_E" exitSpeed="2" callSite="True" />
+        <unit main="15 B_R_M" mainSpeed="2.1" loop="1" exit="18 B_L_E" exitSpeed="2" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="12 B_R_E" return="-1">
+      <units>
+        <unit main="17 B_R_E" mainSpeed="2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="13 B_L_E" return="-1">
+      <units>
+        <unit main="18 B_L_E" mainSpeed="2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="14 RFT" return="-1">
+      <units>
+        <unit main="19 RFT" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="15 LFT" return="-1">
+      <units>
+        <unit main="20 LFT" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="16 RBT" return="-1">
+      <units>
+        <unit main="21 RBT" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="17 LBT" return="-1">
+      <units>
+        <unit main="22 LBT" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="18 R" return="-1">
+      <units>
+        <unit main="23 R" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="19 L" return="-1">
+      <units>
+        <unit main="24 L" mainSpeed="1.2" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="20 Fst_R" return="-1">
+      <units>
+        <unit main="25 Fst_R" mainSpeed="2.1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="21 Fst_L" return="-1">
+      <units>
+        <unit main="26 Fst_L" mainSpeed="2.1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="22 RT" return="-1">
+      <units>
+        <unit main="27 RT" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="23 LT" return="-1">
+      <units>
+        <unit main="28 LT" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="24 F getup" return="-1">
+      <units>
+        <unit main="29 F getup" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="25 B getup  " return="-1">
+      <units>
+        <unit main="30 B getup  " mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="26 FR attack" return="-1">
+      <units>
+        <unit main="31 FR attack" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="27 FL attack" return="-1">
+      <units>
+        <unit main="32 FL attack" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="28 r_a1" return="-1">
+      <units>
+        <unit main="33 r_a1" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="29 l_a1" return="-1">
+      <units>
+        <unit main="34 l_a1" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="30 A_Ready" return="0">
+      <units>
+        <unit main="35 A_Ready" mainSpeed="1" loop="1" exit="2 Balance" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="31 A_Punch_R" return="-1">
+      <units>
+        <unit main="36 A_Punch_R" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="32 A_Punch_L" return="-1">
+      <units>
+        <unit main="37 A_Punch_L" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="33 A_Moving_R" return="-1">
+      <units>
+        <unit main="38 A_Moving_R" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="34 A_Moving_L" return="-1">
+      <units>
+        <unit main="39 A_Moving_L" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="35 A_Moving_RT" return="-1">
+      <units>
+        <unit main="40 A_Moving_RT" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="36 A_Moving_LT" return="-1">
+      <units>
+        <unit main="41 A_Moving_LT" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="37 A_F_attack" return="-1">
+      <units>
+        <unit main="42 A_F_attack" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="38 P_F_A" return="-1">
+      <units>
+        <unit main="43 P_F_A" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="39 F_Throw1" return="-1">
+      <units>
+        <unit main="44 F_Throw1" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="40 F_Throw2" return="-1">
+      <units>
+        <unit main="45 F_Throw2" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="41 P_R_A" return="-1">
+      <units>
+        <unit main="46 P_R_A" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="42 P_L_A" return="-1">
+      <units>
+        <unit main="47 P_L_A" mainSpeed="1.5" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+    <Flow name="43 defe" return="-1">
+      <units>
+        <unit main="48 defe" mainSpeed="1" loop="1" exit="" exitSpeed="1" callSite="True" />
+      </units>
+    </Flow>
+  </FlowRoot>
+  <PageRoot>
+    <Page name="1 Init">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="125" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="2 Balance">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="3 F_R_S">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -64.75 64.45 -103.12 102.83 51.27 -51.56 -16.11 -7.62" />
+        <step frame="18" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -70.61 61.52 -132.42 96.97 65.92 -54.49 -10.25 -4.69" />
+        <step frame="30" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -70.61 58.59 -103.12 102.83 46.88 -60.35 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="4 F_L_S">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 7.32 15.82" />
+        <step frame="18" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 70.31 -103.12 132.13 51.27 -66.21 4.39 9.96" />
+        <step frame="30" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -58.89 70.31 -103.12 102.83 60.06 -47.17 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="5 ff_r_l">
+      <param compileSize="1" acceleration="32" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-110.45 51.56 -68.26 67.97 -14.65 14.36 -45.41 44.82 -1.46 1.17 -73.54 49.8 -103.12 102.83 39.55 -63.28 4.39 7.03" />
+        <step frame="18" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 84.96 -103.12 137.99 51.27 -63.28 4.39 7.03" />
+        <step frame="27" pose="-66.5 95.51 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -53.03 70.31 -103.12 102.83 60.06 -42.77 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="6 ff_l_r">
+      <param compileSize="1" acceleration="32" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-51.86 110.16 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -50.1 73.24 -103.12 102.83 62.99 -39.84 -7.32 -4.69" />
+        <step frame="18" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -79.39 61.52 -126.56 102.83 57.13 -51.56 -7.32 -4.69" />
+        <step frame="27" pose="-95.8 66.21 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -70.61 52.73 -103.12 102.83 42.48 -60.35 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="7 F_R_E">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -70.61 52.73 -103.12 102.83 42.48 -60.35 10.25 15.82" />
+        <step frame="24" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 64.45 -103.12 132.13 57.13 -66.21 4.39 9.96" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="8 F_L_E">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -53.03 70.31 -103.12 102.83 60.06 -42.77 -19.04 -10.55" />
+        <step frame="24" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -70.61 61.52 -132.42 102.83 65.92 -54.49 -10.25 -4.69" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="9 ff_r_l">
+      <param compileSize="1" acceleration="32" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-110.45 51.56 -68.26 67.97 -14.65 14.36 -45.41 44.82 -1.46 1.17 -73.54 49.8 -103.12 102.83 39.55 -63.28 4.39 7.03" />
+        <step frame="18" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 84.96 -103.12 137.99 51.27 -63.28 4.39 7.03" />
+        <step frame="27" pose="-66.5 95.51 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -53.03 70.31 -103.12 102.83 60.06 -42.77 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="10 ff_l_r">
+      <param compileSize="1" acceleration="32" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-51.86 110.16 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -50.1 73.24 -103.12 102.83 62.99 -39.84 -7.32 -4.69" />
+        <step frame="18" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -79.39 61.52 -126.56 102.83 57.13 -51.56 -7.32 -4.69" />
+        <step frame="27" pose="-95.8 66.21 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -70.61 52.73 -103.12 102.83 42.48 -60.35 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="11 FRT_R_M">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-66.5 95.21 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 73.24 -103.12 102.83 57.13 -48.63 -19.04 -7.62" />
+        <step frame="24" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -76.46 67.38 -132.42 96.97 65.92 -54.49 -10.25 -4.69" />
+        <step frame="36" pose="-89.94 72.07 -68.26 67.97 -14.65 14.36 -15.82 45.12 -1.46 1.17 -67.68 55.66 -103.12 102.83 48.34 -57.42 -1.46 1.17" />
+        <step frame="48" pose="-98.73 62.99 -68.26 67.97 -14.65 14.36 -45.12 15.82 -1.46 1.17 -73.54 55.66 -103.12 102.83 45.41 -60.35 7.32 15.82" />
+        <step frame="60" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -67.68 76.17 -103.12 132.13 51.27 -66.21 4.39 9.96" />
+        <step frame="72" pose="-72.36 89.65 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -58.89 70.31 -103.12 102.83 57.13 -48.63 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="12 FLT_L_M">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-98.73 62.99 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -70.61 58.59 -103.12 102.83 48.34 -57.42 7.32 15.82" />
+        <step frame="24" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -67.68 76.17 -103.12 132.13 54.2 -66.21 4.39 9.96" />
+        <step frame="36" pose="-72.36 89.65 -68.26 67.97 -14.65 14.36 -45.12 15.82 -1.46 1.17 -58.89 64.45 -103.12 102.83 57.13 -48.63 -1.46 1.17" />
+        <step frame="48" pose="-66.5 95.21 -68.26 67.97 -14.65 14.36 -15.82 45.12 -1.46 1.17 -53.03 70.31 -103.12 102.83 62.99 -48.63 -19.04 -7.62" />
+        <step frame="60" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -76.46 67.38 -132.42 102.83 65.92 -51.56 -10.25 -4.69" />
+        <step frame="72" pose="-89.94 72.07 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -67.68 55.66 -103.12 102.83 48.34 -57.42 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="13 B_R_S">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -58.89 58.59 -103.12 102.83 51.27 -51.56 -16.11 -7.62" />
+        <step frame="24" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -67.68 58.59 -132.42 102.83 65.92 -51.56 -10.25 -4.69" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.17 0.88 -50.1 61.52 -103.12 102.83 54.2 -42.77 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="14 B_L_S">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -53.03 52.73 -103.12 102.83 51.27 -51.56 7.32 15.82" />
+        <step frame="24" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -58.89 67.38 -103.12 132.13 51.27 -66.21 4.39 9.96" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 49.8 -103.12 102.83 45.41 -57.42 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="15 B_R_M">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -50.1 67.38 -100.2 102.83 57.13 -39.84 10.25 15.82" />
+        <step frame="24" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 67.38 -103.12 140.92 51.27 -72.07 4.39 9.96" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -67.68 46.88 -103.12 102.83 42.48 -60.35 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="16 B_L_M">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -67.68 49.8 -103.12 99.9 42.48 -60.35 -10.25 -7.62" />
+        <step frame="24" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -70.61 61.52 -132.42 102.83 65.92 -51.56 -10.25 -4.69" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -50.1 67.38 -103.12 102.83 60.06 -42.77 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="17 B_R_E">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -50.1 61.52 -103.12 102.83 57.13 -45.7 7.32 15.82" />
+        <step frame="24" pose="-80.86 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -4.39 7.03 -61.82 79.1 -103.12 132.13 51.27 -66.21 4.39 9.96" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="18 B_L_E">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -64.75 52.73 -103.12 102.83 45.41 -57.42 -19.04 -7.62" />
+        <step frame="24" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -7.32 4.1 -79.39 61.52 -132.42 102.83 65.92 -51.56 -10.25 -4.69" />
+        <step frame="36" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="19 RFT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -50.98 50.98 -16.11 15.82 -70.61 61.52 -117.77 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -50.98 50.98 -10.25 9.96 -61.82 61.52 -100.2 99.9 51.27 -51.56 -7.32 1.17" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="20 LFT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -51.27 50.68 -16.11 15.82 -61.82 70.31 -100.2 117.48 51.27 -60.35 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -51.27 50.68 -10.25 9.96 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 7.03" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="21 RBT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -33.4 33.4 -16.11 15.82 -70.61 61.52 -117.77 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -33.4 33.4 -10.25 9.96 -61.82 61.52 -103.12 102.83 51.27 -51.56 -7.32 1.17" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="22 LBT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -33.69 33.11 -16.11 15.82 -61.82 70.31 -100.2 117.48 51.27 -60.35 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -33.69 33.11 -10.25 9.96 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 7.03" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="23 R">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -16.11 15.82 -70.61 61.52 -114.84 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -10.25 9.96 -61.82 61.52 -100.2 99.9 51.27 -51.56 -7.32 1.17" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="24 L">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -16.11 15.82 -61.82 70.31 -100.2 114.55 51.27 -60.35 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -10.25 9.96 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 7.03" />
+        <step frame="33" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="25 Fst_R">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -19.04 24.61 -70.61 61.52 -117.77 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="14" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -19.04 24.61 -70.61 61.52 -117.77 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="27" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -19.04 18.75 -61.82 61.52 -100.2 99.9 51.27 -51.56 -7.32 1.17" />
+        <step frame="39" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+        <step frame="42" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="26 Fst_L">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -24.9 18.75 -61.82 67.38 -100.2 111.62 51.27 -57.42 -1.46 1.17" />
+        <step frame="14" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -24.9 18.75 -61.82 67.38 -100.2 111.62 51.27 -57.42 -1.46 1.17" />
+        <step frame="27" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 44.82 -19.04 18.75 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 7.03" />
+        <step frame="39" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+        <step frame="42" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="27 RT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 3 3 3 3" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -21.68 15.82 -1.46 1.17 -70.61 61.52 -117.77 99.9 60.06 -51.56 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -30.47 30.47 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+        <step frame="39" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="28 LT">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 3 3 3 3" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -16.11 21.39 -1.46 1.17 -61.82 70.31 -100.2 117.48 51.27 -60.35 -1.46 1.17" />
+        <step frame="21" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -30.76 30.18 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+        <step frame="39" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="29 F getup">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="9" pose="-81.45 81.15 -0.88 0.59 -14.65 14.36 -46.58 46.29 -1.17 0.88 -48.63 48.34 -67.38 67.09 30.76 -31.05 -1.17 0.88" />
+        <step frame="18" pose="-14.94 14.65 -4.69 4.39 -3.22 2.93 -46.58 46.29 -1.17 0.88 -48.63 48.34 -67.38 67.09 30.76 -31.05 -1.17 0.88" />
+        <step frame="43" pose="29 -29.3 19.92 -20.21 -104.59 104.3 -46.58 46.29 -4.1 3.81 -133.89 133.59 -114.55 114.26 94.63 -94.92 -2.34 2.05" />
+        <step frame="118" pose="-34.57 34.28 -72.66 72.36 -16.99 16.7 -46.29 46 0 -0.29 -126.56 126.27 -138.87 138.57 56.54 -56.84 0 -0.29" />
+        <step frame="218" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="30 B getup  ">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="50" pose="-25.78 25.49 34.57 -34.86 -0.29 0 -46.58 46.29 -1.17 0.88 25.49 -25.78 -94.04 93.75 7.91 -8.2 -1.17 0.88" />
+        <step frame="75" pose="9.67 -9.96 75.59 -75.88 2.64 -2.93 -46.58 46.29 -1.17 0.88 25.78 -26.07 -117.48 117.19 83.2 -83.5 -1.17 0.88" />
+        <step frame="125" pose="-87.01 86.72 2.34 -2.64 2.64 -2.93 -46.58 46.29 -1.17 0.88 25.78 -26.07 -96.97 96.68 83.2 -80.57 -1.17 0.88" />
+        <step frame="225" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="31 FR attack">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="25" pose="-25.49 7.32 35.45 11.72 -101.95 14.65 -46.58 46.58 -1.17 3.52 -76.46 76.17 -103.12 102.83 51.27 -51.56 -1.17 3.52" />
+        <step frame="75" pose="49.22 9.96 -105.76 45.7 -15.23 17.87 -29.3 31.35 -2.05 13.77 -135.64 -25.2 -125.1 4.98 20.21 -72.36 -23.44 4.69" />
+        <step frame="125" pose="49.22 9.96 -105.76 45.7 -15.23 17.87 -29.3 31.35 -2.05 13.77 -135.64 -25.2 -125.1 4.98 20.21 -72.36 -23.44 4.69" />
+        <step frame="175" pose="49.22 9.96 -105.76 45.7 -15.23 17.87 -29.3 31.35 -2.05 13.77 -135.64 48.05 -95.8 51.86 20.21 -78.22 -23.44 10.55" />
+        <step frame="225" pose="-133.01 28.71 -11.43 101.37 -5.86 1.76 -29.3 31.35 -2.05 13.77 -125.98 106.64 -129.2 141.8 46.58 -82.03 -23.44 4.69" />
+        <step frame="275" pose="-81.15 34.57 -68.26 83.2 -14.65 0.88 -46.29 46 0 -0.29 -126.56 126.27 -138.87 138.57 56.54 -56.84 0 -0.29" />
+        <step frame="375" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="32 FL attack">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="25" pose="21.68 25.2 -12.01 -35.74 -14.94 101.66 -46.88 46.29 -3.81 0.88 -76.46 76.17 -103.12 102.83 51.27 -51.56 -3.81 0.88" />
+        <step frame="75" pose="-10.25 -49.51 -46 105.47 -18.16 14.94 -31.64 29 -14.06 1.76 24.9 135.35 -5.27 124.8 72.07 -20.51 -4.98 23.14" />
+        <step frame="125" pose="-10.25 -49.51 -46 105.47 -18.16 14.94 -31.64 29 -14.06 1.76 24.9 135.35 -5.27 124.8 72.07 -20.51 -4.98 23.14" />
+        <step frame="175" pose="-10.25 -49.51 -46 105.47 -18.16 14.94 -31.64 29 -14.06 1.76 -48.34 135.35 -52.15 95.51 77.93 -20.51 -10.84 23.14" />
+        <step frame="225" pose="-29 132.71 -101.66 11.13 -2.05 5.57 -31.64 29 -14.06 1.76 -106.93 125.68 -142.09 128.91 81.74 -46.88 -4.98 23.14" />
+        <step frame="275" pose="-34.86 80.86 -83.5 67.97 -1.17 14.36 -46.29 46 0 -0.29 -126.56 126.27 -138.87 138.57 56.54 -56.84 0 -0.29" />
+        <step frame="375" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="33 r_a1">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="9" pose="17.29 80.86 -90.53 67.97 -26.37 14.36 -45.12 45.12 -16.11 15.82 -67.68 61.52 -114.84 102.83 57.13 -51.56 -1.46 1.17" />
+        <step frame="21" pose="17.29 80.86 -90.53 67.97 -26.37 14.36 -45.12 45.12 -16.11 15.82 -67.68 61.52 -114.84 102.83 57.13 -51.56 -1.46 1.17" />
+        <step frame="30" pose="7.62 80.86 -9.38 67.97 -3.22 14.36 -45.12 45.12 -7.32 7.03 -64.75 58.59 -108.98 96.97 54.2 -48.63 -1.46 9.96" />
+        <step frame="55" pose="7.62 80.86 -9.38 67.97 -3.22 14.36 -45.12 45.12 -7.32 7.03 -64.75 58.59 -108.98 96.97 54.2 -48.63 -1.46 9.96" />
+        <step frame="64" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="34 l_a1">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="9" pose="-81.15 -17.58 -68.26 90.23 -14.65 26.07 -45.41 44.82 -16.11 15.82 -61.82 67.38 -103.12 114.55 51.27 -57.42 -1.46 1.17" />
+        <step frame="21" pose="-81.15 -17.58 -68.26 90.23 -14.65 26.07 -45.41 44.82 -16.11 15.82 -61.82 67.38 -103.12 114.55 51.27 -57.42 -1.46 1.17" />
+        <step frame="30" pose="-81.15 -7.91 -68.26 9.08 -14.65 2.93 -45.41 44.82 -7.32 7.03 -58.89 64.45 -97.27 108.69 48.34 -54.49 -10.25 1.17" />
+        <step frame="55" pose="-81.15 -7.91 -68.26 9.08 -14.65 2.93 -45.41 44.82 -7.32 7.03 -58.89 64.45 -97.27 108.69 48.34 -54.49 -10.25 1.17" />
+        <step frame="64" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="35 A_Ready">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="36 A_Punch_R">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="25" pose="-81.15 80.86 -49.51 75.59 101.66 -101.95 -45.12 44.82 -27.83 24.61 -79.39 49.8 -132.42 73.54 68.85 -39.84 -1.46 42.19" />
+        <step frame="50" pose="-81.15 80.86 36.62 75 -3.22 -102.83 -44.82 44.82 -34.57 18.75 -76.46 41.02 -132.71 55.96 69.73 -31.05 -11.43 42.19" />
+        <step frame="62" pose="-81.15 80.86 36.62 75 -3.22 -102.83 -44.82 44.82 -34.57 18.75 -76.46 41.02 -132.71 55.96 69.73 -31.05 -11.43 42.19" />
+        <step frame="80" pose="-81.15 80.86 36.62 75 -3.22 -102.83 -44.82 44.82 -34.57 18.75 -76.46 58.59 -121 79.39 69.73 -48.63 -11.43 33.4" />
+        <step frame="105" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="37 A_Punch_L">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="25" pose="-81.15 80.86 -75.88 49.22 101.66 -101.95 -45.12 44.82 -24.9 27.54 -50.1 79.1 -73.83 132.13 39.55 -69.14 -42.48 1.17" />
+        <step frame="50" pose="-81.15 80.86 -75.29 -36.91 102.54 2.93 -45.12 44.53 -19.04 34.28 -41.31 76.17 -56.25 132.42 30.76 -70.02 -42.48 11.13" />
+        <step frame="62" pose="-81.15 80.86 -75.29 -36.91 102.54 2.93 -45.12 44.53 -19.04 34.28 -41.31 76.17 -56.25 132.42 30.76 -70.02 -42.48 11.13" />
+        <step frame="80" pose="-81.15 80.86 -75.29 -36.91 102.54 2.93 -45.12 44.53 -19.04 34.28 -58.89 76.17 -79.69 120.7 48.34 -70.02 -33.69 11.13" />
+        <step frame="105" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="38 A_Moving_R">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 44.24 -1.46 33.69 -62.7 46 -104.3 75 52.44 -41.02 7.62 26.07" />
+        <step frame="24" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 44.24 -1.46 33.69 -62.7 60.64 -104.3 104.3 52.44 -55.66 7.62 26.07" />
+        <step frame="36" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -1.46 1.17 -62.7 62.4 -104.3 104 52.44 -52.73 7.62 9.67" />
+        <step frame="48" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -1.46 1.17 -62.7 62.4 -104.3 104 52.44 -52.73 -1.17 0.88" />
+        <step frame="60" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -19.04 15.82 -77.34 62.4 -133.59 104 67.09 -52.73 7.62 9.67" />
+        <step frame="72" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="39 A_Moving_L">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -44.53 43.65 -33.98 1.17 -46.29 62.4 -75.29 104 40.72 -52.73 -26.37 -7.91" />
+        <step frame="24" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -44.53 43.65 -33.98 1.17 -60.94 62.4 -104.59 104 55.37 -52.73 -26.37 -7.91" />
+        <step frame="36" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -1.46 1.17 -62.7 62.4 -104.3 104 52.44 -52.73 -9.96 -7.91" />
+        <step frame="48" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -1.46 1.17 -62.7 62.4 -104.3 104 52.44 -52.73 -1.17 0.88" />
+        <step frame="60" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -43.95 43.65 -16.11 18.75 -62.7 77.05 -104.3 133.3 52.44 -67.38 -9.96 -7.91" />
+        <step frame="72" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="40 A_Moving_RT">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -24.9 24.61 -41.31 76.17 -97.27 96.97 62.99 -33.98 -21.97 21.68" />
+        <step frame="24" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -24.9 24.61 -41.31 76.17 -97.27 96.97 62.99 -33.98 -21.97 21.68" />
+        <step frame="36" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -16.11 15.82 -58.89 58.59 -97.27 96.97 48.34 -48.63 -16.11 15.82" />
+      </steps>
+    </Page>
+    <Page name="41 A_Moving_LT">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="12" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -24.9 24.61 -76.46 41.02 -97.27 96.97 33.69 -63.28 -21.97 21.68" />
+        <step frame="24" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -24.9 24.61 -76.46 41.02 -97.27 96.97 33.69 -63.28 -21.97 21.68" />
+        <step frame="36" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -16.11 15.82 -58.89 58.59 -97.27 96.97 48.34 -48.63 -16.11 15.82" />
+      </steps>
+    </Page>
+    <Page name="42 A_F_attack">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+        <step frame="18" pose="-22.56 -38.96 12.89 -9.67 -14.65 14.36 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+        <step frame="30" pose="-22.56 -38.96 12.89 -9.67 -14.65 14.36 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+        <step frame="55" pose="-27.54 -18.46 -76.46 92.87 -14.65 14.36 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+        <step frame="67" pose="-27.54 -18.46 -104.88 104 -44.82 63.57 -45.12 44.82 -21.97 21.68 -72.36 58.59 -137.99 96.97 70.31 -45.7 -7.91 37.21" />
+        <step frame="92" pose="-27.54 -18.46 -104.88 104 -44.82 63.57 -45.12 44.82 -21.97 21.68 -72.36 58.59 -137.99 96.97 70.31 -45.7 -7.91 37.21" />
+        <step frame="117" pose="-27.54 -41.89 -5.27 -0.29 -44.82 63.57 -45.12 44.82 -21.97 21.68 -72.36 58.59 -137.99 96.97 73.24 -45.7 -7.91 37.21" />
+        <step frame="179" pose="-81.15 80.86 -75.88 75.59 101.66 -101.95 -45.12 44.82 -21.97 21.68 -58.89 58.59 -97.27 96.97 48.34 -48.63 -21.97 21.68" />
+      </steps>
+    </Page>
+    <Page name="43 P_F_A">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="25" pose="36.04 -36.33 -68.26 67.97 -87.89 87.6 -45.12 45.12 -1.46 1.17 -91.11 90.82 -123.63 123.34 57.13 -57.42 -1.46 1.17" />
+        <step frame="50" pose="65.33 -65.62 -68.26 67.97 -58.59 58.3 -45.12 45.12 -1.46 1.17 -20.8 20.51 -56.25 55.96 80.57 -80.86 -1.46 1.17" />
+        <step frame="100" pose="65.33 -65.62 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -20.8 20.51 -56.25 55.96 80.57 -80.86 -1.46 1.17" />
+        <step frame="150" pose="14.36 -12.89 9.38 -8.79 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+        <step frame="200" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="44 F_Throw1">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.86 9.38 -9.67 -14.65 14.36 -45.41 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+        <step frame="18" pose="-22.56 -38.96 12.89 -9.67 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="30" pose="-22.56 -38.96 12.89 -9.67 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="55" pose="-27.54 -18.46 -76.46 92.87 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="67" pose="-27.54 -18.46 -104.88 104 -44.82 63.57 -44.82 45.7 -27.83 22.85 -65.62 48.93 -139.75 91.99 73.54 -47.17 -1.46 45.12" />
+        <step frame="92" pose="-27.54 -18.46 -104.88 104 -44.82 63.57 -44.82 45.7 -27.83 22.85 -65.62 48.93 -139.75 91.99 73.54 -47.17 -1.46 45.12" />
+        <step frame="117" pose="-27.54 -41.89 -5.27 -0.29 -44.82 63.57 -44.82 45.7 -27.83 22.85 -65.62 9.38 -139.75 20.8 73.54 -13.77 -1.46 45.12" />
+        <step frame="202" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 45.12 -1.46 1.17 -68.26 67.97 -139.75 139.45 73.54 -73.83 -1.46 1.17" />
+        <step frame="264" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="45 F_Throw2">
+      <param compileSize="1" acceleration="5" softness="7 7 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6" />
+      <steps>
+        <step frame="9" pose="-81.15 80.86 9.38 -9.67 -14.65 14.36 -45.41 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+        <step frame="18" pose="38.67 22.27 9.38 -13.18 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="30" pose="38.67 22.27 9.38 -13.18 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="55" pose="18.16 27.25 -93.16 76.17 -14.65 14.36 -46 45.7 -1.46 1.17 -71.48 71.19 -130.96 130.66 68.85 -69.14 -1.46 1.17" />
+        <step frame="67" pose="18.16 27.25 -104.3 104.59 -63.87 44.53 -46 44.53 -23.14 27.54 -49.22 65.33 -92.29 139.45 46.88 -73.83 -45.41 1.17" />
+        <step frame="92" pose="18.16 27.25 -104.3 104.59 -63.87 44.53 -46 44.53 -23.14 27.54 -49.22 65.33 -92.29 139.45 46.88 -73.83 -45.41 1.17" />
+        <step frame="117" pose="41.6 27.25 0 4.98 -63.87 44.53 -46 44.53 -23.14 27.54 -9.67 65.33 -21.09 139.45 13.48 -73.83 -45.41 1.17" />
+        <step frame="202" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.41 45.12 -1.46 1.17 -68.26 67.97 -139.75 139.45 73.54 -73.83 -1.46 1.17" />
+        <step frame="264" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -103.12 102.83 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="46 P_R_A">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="50" pose="44.53 27.83 -53.61 72.36 -101.66 53.91 -44.82 46.58 -11.72 24.02 -73.54 61.52 -112.21 99.9 50.68 -51.56 -2.93 3.52" />
+        <step frame="62" pose="4.39 -2.64 1.17 100.2 1.76 101.07 -46.58 46.58 -23.73 64.45 -69.43 11.72 -140.62 22.27 70.61 -8.2 -21.39 63.57" />
+        <step frame="93" pose="4.39 -2.64 1.17 100.2 1.76 101.07 -46.58 46.58 -23.73 64.45 -69.43 11.72 -140.62 22.27 70.61 -8.2 -21.39 63.57" />
+        <step frame="218" pose="-67.09 67.68 -60.64 61.52 -18.46 18.75 -46.58 46.58 -1.46 1.17 -70.61 67.68 -140.04 139.45 70.9 -71.78 -1.46 1.17" />
+        <step frame="230" pose="-67.09 67.68 -60.64 61.52 -18.46 18.75 -46.58 46.58 -1.46 1.17 -70.61 67.68 -140.04 139.45 70.9 -71.78 -1.46 1.17" />
+        <step frame="355" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="47 P_L_A">
+      <param compileSize="1" acceleration="32" softness="5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5" />
+      <steps>
+        <step frame="50" pose="-28.12 -44.82 -72.66 53.32 -54.2 101.37 -46.88 44.53 -24.32 11.43 -61.82 73.24 -100.2 111.91 51.27 -50.98 -3.81 2.64" />
+        <step frame="62" pose="2.34 -4.69 -100.49 -1.46 -101.37 -2.05 -46.88 46.29 -64.75 23.44 -12.01 69.14 -22.56 140.33 7.91 -70.9 -63.87 21.09" />
+        <step frame="93" pose="2.34 -4.69 -100.49 -1.46 -101.37 -2.05 -46.88 46.29 -64.75 23.44 -12.01 69.14 -22.56 140.33 7.91 -70.9 -63.87 21.09" />
+        <step frame="218" pose="-67.09 67.68 -60.64 61.52 -18.46 18.75 -46.58 46.58 -1.46 1.17 -70.61 67.68 -140.04 139.45 70.9 -71.78 -1.46 1.17" />
+        <step frame="230" pose="-67.09 67.68 -60.64 61.52 -18.46 18.75 -46.58 46.58 -1.46 1.17 -70.61 67.68 -140.04 139.45 70.9 -71.78 -1.46 1.17" />
+        <step frame="355" pose="-81.15 80.57 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.61 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+    <Page name="48 defe">
+      <param compileSize="1" acceleration="32" softness="5 5 4 4 4 4 5 5 5 5 5 5 5 5 4 4 4 4" />
+      <steps>
+        <step frame="25" pose="-81.15 80.86 34.28 -34.57 -14.65 14.36 -45.12 45.12 -21.97 21.68 -70.61 70.31 -114.84 114.55 60.06 -60.35 -21.97 21.68" />
+        <step frame="56" pose="-81.15 80.86 34.28 -34.57 -14.65 14.36 -45.12 45.12 -21.97 21.68 -70.61 70.31 -114.84 114.55 60.06 -60.35 -21.97 21.68" />
+        <step frame="81" pose="-81.15 80.86 -68.26 67.97 -14.65 14.36 -45.12 45.12 -1.46 1.17 -61.82 61.52 -100.2 99.9 51.27 -51.56 -1.46 1.17" />
+      </steps>
+    </Page>
+  </PageRoot>
+  <GroupRoot>
+    <Group name="None">
+      <param weights="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
+    </Group>
+    <Group name="All">
+      <param weights="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1" />
+    </Group>
+  </GroupRoot>
+  <BucketRoot>
+    <Bucket name="motion group (1)">
+      <callFlows>
+        <callFlow callIndex="1" subIndex="0" exitIndex="0" flow="1 Init" />
+        <callFlow callIndex="2" subIndex="0" exitIndex="0" flow="2 Balance" />
+        <callFlow callIndex="3" subIndex="0" exitIndex="0" flow="3 F_R_S" />
+        <callFlow callIndex="4" subIndex="1" exitIndex="0" flow="3 F_R_S" />
+        <callFlow callIndex="5" subIndex="2" exitIndex="0" flow="3 F_R_S" />
+        <callFlow callIndex="6" subIndex="0" exitIndex="0" flow="4 F_L_S" />
+        <callFlow callIndex="7" subIndex="1" exitIndex="0" flow="4 F_L_S" />
+        <callFlow callIndex="8" subIndex="2" exitIndex="0" flow="4 F_L_S" />
+        <callFlow callIndex="9" subIndex="0" exitIndex="0" flow="5 F_R_E" />
+        <callFlow callIndex="10" subIndex="0" exitIndex="0" flow="6 F_L_E" />
+        <callFlow callIndex="11" subIndex="0" exitIndex="0" flow="7 ff_r_l" />
+        <callFlow callIndex="12" subIndex="1" exitIndex="0" flow="7 ff_r_l" />
+        <callFlow callIndex="13" subIndex="0" exitIndex="0" flow="8 FRT_R_M" />
+        <callFlow callIndex="14" subIndex="0" exitIndex="0" flow="9 FLT_L_M" />
+        <callFlow callIndex="15" subIndex="0" exitIndex="0" flow="10 B_R_S" />
+        <callFlow callIndex="16" subIndex="1" exitIndex="0" flow="10 B_R_S" />
+        <callFlow callIndex="17" subIndex="2" exitIndex="0" flow="10 B_R_S" />
+        <callFlow callIndex="18" subIndex="0" exitIndex="0" flow="11 B_L_S" />
+        <callFlow callIndex="19" subIndex="1" exitIndex="0" flow="11 B_L_S" />
+        <callFlow callIndex="20" subIndex="2" exitIndex="0" flow="11 B_L_S" />
+        <callFlow callIndex="21" subIndex="0" exitIndex="0" flow="12 B_R_E" />
+        <callFlow callIndex="22" subIndex="0" exitIndex="0" flow="13 B_L_E" />
+        <callFlow callIndex="23" subIndex="0" exitIndex="0" flow="14 RFT" />
+        <callFlow callIndex="24" subIndex="0" exitIndex="0" flow="15 LFT" />
+        <callFlow callIndex="25" subIndex="0" exitIndex="0" flow="16 RBT" />
+        <callFlow callIndex="26" subIndex="0" exitIndex="0" flow="17 LBT" />
+        <callFlow callIndex="27" subIndex="0" exitIndex="0" flow="18 R" />
+        <callFlow callIndex="28" subIndex="0" exitIndex="0" flow="19 L" />
+        <callFlow callIndex="29" subIndex="0" exitIndex="0" flow="20 Fst_R" />
+        <callFlow callIndex="30" subIndex="0" exitIndex="0" flow="21 Fst_L" />
+        <callFlow callIndex="31" subIndex="0" exitIndex="0" flow="22 RT" />
+        <callFlow callIndex="32" subIndex="0" exitIndex="0" flow="23 LT" />
+        <callFlow callIndex="33" subIndex="0" exitIndex="0" flow="24 F getup" />
+        <callFlow callIndex="34" subIndex="0" exitIndex="0" flow="25 B getup  " />
+        <callFlow callIndex="35" subIndex="0" exitIndex="0" flow="26 FR attack" />
+        <callFlow callIndex="36" subIndex="0" exitIndex="0" flow="27 FL attack" />
+        <callFlow callIndex="37" subIndex="0" exitIndex="0" flow="28 r_a1" />
+        <callFlow callIndex="38" subIndex="0" exitIndex="0" flow="29 l_a1" />
+        <callFlow callIndex="39" subIndex="0" exitIndex="0" flow="30 A_Ready" />
+        <callFlow callIndex="40" subIndex="0" exitIndex="0" flow="31 A_Punch_R" />
+        <callFlow callIndex="41" subIndex="0" exitIndex="0" flow="32 A_Punch_L" />
+        <callFlow callIndex="42" subIndex="0" exitIndex="0" flow="33 A_Moving_R" />
+        <callFlow callIndex="43" subIndex="0" exitIndex="0" flow="34 A_Moving_L" />
+        <callFlow callIndex="44" subIndex="0" exitIndex="0" flow="35 A_Moving_RT" />
+        <callFlow callIndex="45" subIndex="0" exitIndex="0" flow="36 A_Moving_LT" />
+        <callFlow callIndex="46" subIndex="0" exitIndex="0" flow="37 A_F_attack" />
+        <callFlow callIndex="47" subIndex="0" exitIndex="0" flow="38 P_F_A" />
+        <callFlow callIndex="48" subIndex="0" exitIndex="0" flow="39 F_Throw1" />
+        <callFlow callIndex="49" subIndex="0" exitIndex="0" flow="40 F_Throw2" />
+        <callFlow callIndex="50" subIndex="0" exitIndex="0" flow="41 P_R_A" />
+        <callFlow callIndex="51" subIndex="0" exitIndex="0" flow="42 P_L_A" />
+        <callFlow callIndex="52" subIndex="0" exitIndex="0" flow="43 defe" />
+      </callFlows>
+    </Bucket>
+  </BucketRoot>
+</Root>
