@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import pypot.dynamixel
 import time
 import numpy as np
@@ -6,10 +5,7 @@ from pprint import pprint
 import xml.etree.cElementTree as ET
 from collections import Counter
 from copy import deepcopy
-import readchar
-import rospy
-from rospy_message_converter import message_converter
-from sumo.msg import Joystick
+from readchar import readchar
 
 class Dxl(object):
     def __init__(self,port_id=0, scan_limit=25, lock=-1):
@@ -79,7 +75,7 @@ class XmlTree(object):
             raise RuntimeError("ParseFail!")
         motionsets = []
         for step in steps:
-            motionsets.append(MotionSet(self.parsexml(step.attrib['main']),speed=float(step.attrib['mainSpeed']),exclude=exclude,offsets=offsets))
+            motionsets.append(MotionSet(self.parsexml(step.attrib['main']),speed=float(step.attrib['mainSpeed']),exclude=exclude,offsets=[]))
 
         return motionsets
 
@@ -183,29 +179,29 @@ class Action():
             iter -= 1
 
 
-def Move(buttonMsg):
-    buttonMessage = message_converter.convert_ros_message_to_dictionary(buttonMsg)
-    try:
-        for key in buttonMessage.keys():
-            if buttonMessage[key] == 'True':
-                motionsKey[key].execute(speed = 1)
-            elif buttonMessage[key] == 'w':
-                balance.execute()
-                time.sleep(0.01)
-                boom_walk.execute(iter = 1)
-                time.sleep(0.01)
-                balance.execute()
-            elif buttonMessage[key] == 's':
-                bwalk_init.execute(iter = 1)
-                bwalk_motion.execute(iter = 1)
-            elif buttonMessage[key] == 'a':
-                l_turn.execute(iter = 1)
-            elif buttonMessage[key] == 'd':
-                r_turn.execute(iter = 1)
-            time.sleep(0.01)
-            a_ready.execute()
-    except Exception as e:
-        print e
+# def Move(buttonMsg):
+#     buttonMessage = message_converter.convert_ros_message_to_dictionary(buttonMsg)
+#     try:
+#         for key in buttonMessage.keys():
+#             if buttonMessage[key] == 'True':
+#                 motionsKey[key].execute(speed = 1)
+#             elif buttonMessage[key] == 'w':
+#                 balance.execute()
+#                 time.sleep(0.01)
+#                 boom_walk.execute(iter = 1)
+#                 time.sleep(0.01)
+#                 balance.execute()
+#             elif buttonMessage[key] == 's':
+#                 bwalk_init.execute(iter = 1)
+#                 bwalk_motion.execute(iter = 1)
+#             elif buttonMessage[key] == 'a':
+#                 l_turn.execute(iter = 1)
+#             elif buttonMessage[key] == 'd':
+#                 r_turn.execute(iter = 1)
+#             time.sleep(0.01)
+#             a_ready.execute()
+#     except Exception as e:
+#         print e
 #--------------------------------------------------------------------------------------------------------------#
 darwin = {1: 90, 2: -90, 3: 67.5, 4: -67.5, 7: 45, 8: -45, 9: 'i', 10: 'i', 13: 'i', 14: 'i', 17: 'i', 18: 'i'}
 abmath = {11: 15, 12: -15, 13: -10, 14: 10, 15: -5, 16: 5}
@@ -215,12 +211,12 @@ inv_wrist = {5:'i' , 6:'i'}
 hand = {5: 60, 6: -60}
 hand_open = {5: -60, 6: 60}
 
-path = '/home/arpit/ctkin_ws/src/sumo/scripts/'
+#path = '/home/arpit/ctkin_ws/src/sumo/scripts/'
 
 #Instances of xml files
-tree = XmlTree(path+'data.xml')
-tree2 = XmlTree(path+'soccer.xml')
-tree3 = XmlTree(path+'fight.xml')
+tree = XmlTree('data.xml')
+tree2 = XmlTree('soccer.xml')
+tree3 = XmlTree('fight.xml')
 
 walk = Action(tree.superparsexml("22 F_S_L",offsets=[darwin]))
 balance = MotionSet(tree.parsexml("152 Balance"), offsets=[darwin,hand])
@@ -237,7 +233,8 @@ r_step = MotionSet(tree2.parsexml("9 ff_r_l"), speed=1.0, offsets=[darwin])
 l_attack = MotionSet(tree.parsexml("21 L attack"),speed=1.2,offsets=[darwin])
 kick = MotionSet(tree.parsexml("18 L kick"),speed=2,offsets=[darwin])
 f_getup = MotionSet(tree.parsexml("27 F getup"),speed=2.7,offsets=[darwin,inv])
-b_getup = MotionSet(tree.parsexml("28 B getup  "),speed=1.5,offsets=[darwin])
+getup_init =MotionSet(tree.parsexml("152 Balance"), offsets=[darwin,abmath])
+b_getup = MotionSet(tree.parsexml("28 B getup  "),speed=1,offsets=[darwin,abmath])
 r_inv = MotionSet(tree2.parsexml("19 RFT"),speed=1.2,offsets=[darwin])
 l_inv = MotionSet(tree2.parsexml("20 LFT"),speed=1.2,offsets=[darwin])
 r_turn = MotionSet(tree2.parsexml("27 RT"),speed=1.2,offsets=[darwin])
@@ -259,13 +256,17 @@ boom_walk = Action([l_step,r_step])
 bwalk_init = Action([bls1])
 bwalk_motion = Action([bls2,bls3])
 
-buttonName = ['key1','key2','key3','key4','l1','r1','l2','r2','lstick']
-buttonMotions = [f_getup,r_attack,b_getup,l_attack,l_punch,r_punch,l_mov,r_mov,'0']
+# buttonName = ['f','x','z','q','e','1','2','a','d']
+# buttonMotions = [f_getup,r_attack,l_attack,l_punch,r_punch,l_mov,r_mov,l_turn,r_turn]
+# motionsKey = dict(zip(buttonName,buttonMotions))
+
+l_attack = MotionSet(tree3.parsexml("47 P_L_A"), speed = 1.2, offsets = [darwin,inv_wrist])
+buttonName = ['f','x','z','q','e','1','2','a','d']
+buttonMotions = [f_getup,r_attack,l_attack,l_punch,r_punch,l_mov,r_mov,l_turn,r_turn]
 motionsKey = dict(zip(buttonName,buttonMotions))
 
 #--------------------------------------------------------------------------------------------------------------#
 if __name__=='__main__':
-    rospy.init_node("rMinusSumo")
     dxl = Dxl(lock=20)
     state = dxl.getPos()
     print state
@@ -273,5 +274,27 @@ if __name__=='__main__':
     balance.execute()
     raw_input("sure")
     a_ready.execute()
-    keysub = rospy.Subscriber('Joykey', Joystick, Move,queue_size = 1)
-    rospy.spin()
+    while True:
+        ch = readchar()
+        num = readchar()
+        trig == ch+num
+        try:
+            motionsKey[trig].execute()
+            # if ch in buttonName:
+            #     motionsKey[ch].execute(iter = 1)
+            # elif ch == 'w':
+            #     balance.execute()
+            #     time.sleep(0.01)
+            #     boom_walk.execute(iter = 1)
+            #     time.sleep(0.01)
+            #     balance.execute()
+            # elif ch == 's':
+            #     bwalk_init.execute(iter = 1)
+            #     bwalk_motion.execute(iter = 1)
+            # elif ch == 'b':
+            #     getup_init.execute()
+            #     b_getup.execute()
+            # time.sleep(0.01)
+            # a_ready.execute()
+        except Exception as e:
+            print e
